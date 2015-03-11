@@ -378,3 +378,23 @@ Endpoints, tunnels and networks can be deleted, as shown in these examples:
     | Start Time          | Duration       | Status   |
     |---------------------+----------------+----------|
     | 2015-03-11 14:26:19 | 0 mins 43 secs | success  |
+
+Monitoring Edge Gateway Logs
+----------------------------
+
+The edge gateway can be configured to send log events to a server for analysis, with a simple option of the `gateway` command. Here is an example:
+
+    $ vca gateway set-syslog --gateway gateway --ip 192.168.109.2
+    
+    | Start Time          | Duration      | Status   |
+    |---------------------+---------------+----------|
+    | 2015-02-12 21:58:38 | 0 mins 8 secs | success  |
+    
+    $ vca gateway
+    
+    Edge Gateways:
+    | Name    | External IPs       | DHCP Service   | Firewall Service   | NAT Service   | Internal Networks          | Syslog        |
+    |---------+--------------------+----------------+--------------------+---------------+----------------------------+---------------|
+    | gateway | ['107.189.93.162'] | On             | On                 | On            | ['default-routed-network'] | 192.168.109.2 |
+
+The following blog entry contains additional information about capturing [edge gateway logs](http://blog.pacogomez.com/monitoring-the-firewall-at-vcloud-air/)
