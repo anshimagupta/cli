@@ -1,5 +1,5 @@
-vCloud Air Network Management with **vca-cli**
-----------------------------------------------
+vCloud Air Network Management with vca-cli
+------------------------------------------
 
 This section describes the network operations available through **vca-cli**
 
@@ -21,7 +21,7 @@ The following is a list of network related commands:
 Network Configuration Overview
 ------------------------------
 
-The `org` and `vdc` commands provide an overview of the network configuration in the virtual data center:
+The `org` command provides the list of networks defined in the organization:
 
     $ vca org info
     Details for org 'M735816878-4430':
@@ -35,6 +35,8 @@ The `org` and `vdc` commands provide an overview of the network configuration in
     | orgNetwork | M735816878-4430-default-routed       |
     | orgNetwork | M735816878-4430-default-isolated     |
     | vdc        | M735816878-4430                      |
+
+The `vdc` command lists the networks available in the virtual data center and the edge gateways (usually one), with a summary of the configuration:
 
     $ vca vdc info
     Virtual Data Center 'M735816878-4430' for 'default' profile; details:
@@ -57,3 +59,38 @@ The `org` and `vdc` commands provide an overview of the network configuration in
     | Name            | External IPs                 | DHCP   | Firewall   | NAT   | VPN   | Routed Networks                                    | Syslog   | Uplinks   |
     |-----------------+------------------------------+--------+------------+-------+-------+----------------------------------------------------+----------+-----------|
     | M735816878-4430 | 23.92.225.232, 23.92.225.247 | On     | Off        | On    | On    | M735816878-4430-default-routed, blueprints-network |          | d2p3-ext  |
+
+In this example, the name of the edge gateway is `M735816878-4430`
+
+Working with Networks
+---------------------
+
+The `network` command lists the networks in the virtual data center:
+
+    vca network
+    Networks available in Virtual Data Center 'M735816878-4430':
+    | Name                             | Mode      | Gateway       | Netmask       | POOL IP Range                 |
+    |----------------------------------+-----------+---------------+---------------+-------------------------------|
+    | M735816878-4430-default-isolated | isolated  | 192.168.99.1  | 255.255.255.0 | 192.168.99.2-192.168.99.100   |
+    | M735816878-4430-default-routed   | natRouted | 192.168.108.1 | 255.255.255.0 | 192.168.108.2-192.168.108.100 |
+    | blueprints-network               | natRouted | 192.168.110.1 | 255.255.255.0 | 192.168.110.2-192.168.110.100 |
+
+To add a new network, use `vca network add` as shown in the example:
+
+    $ vca network add --network routed-120 --gateway M735816878-4430 --gateway_ip 192.168.120.1 \
+          --netmask 255.255.255.0 --dns1 192.168.120.1 --pool 192.168.120.2-192.168.120.100
+          
+    | Start Time          | Duration       | Status   |
+    |---------------------+----------------+----------|
+    | 2015-03-11 12:55:46 | 0 mins 34 secs | success  |
+
+The `--pool` option allows to define the range of IP addresses to be used for the static IP pool.
+
+To delete an existing network, use `vca network delete`. Here is an example:
+
+    $ vca network delete --network routed-120
+    
+    | Start Time          | Duration      | Status   |
+    |---------------------+---------------+----------|
+    | 2015-03-11 12:59:21 | 1 mins 1 secs | success  |
+
