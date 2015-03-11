@@ -3,6 +3,7 @@ vCloud Air Network Management with vca-cli
 
 This section describes the network operations available through **vca-cli**
 
+
 Network Commands
 ----------------
 
@@ -24,6 +25,7 @@ Network Configuration Overview
 The `org` command provides the list of networks defined in the organization:
 
     $ vca org info
+    
     Details for org 'M735816878-4430':
     | Type       | Name                                 |
     |------------+--------------------------------------|
@@ -39,6 +41,7 @@ The `org` command provides the list of networks defined in the organization:
 The `vdc` command lists the networks available in the virtual data center and the edge gateways (usually one), with a summary of the configuration:
 
     $ vca vdc info
+    
     Virtual Data Center 'M735816878-4430' for 'default' profile; details:
     | Type         | Name                             |
     |--------------+----------------------------------|
@@ -62,12 +65,14 @@ The `vdc` command lists the networks available in the virtual data center and th
 
 In this example, the name of the edge gateway is `M735816878-4430`
 
+
 Working with Networks
 ---------------------
 
 The `network` command lists the networks in the virtual data center:
 
-    vca network
+    $ vca network
+    
     Networks available in Virtual Data Center 'M735816878-4430':
     | Name                             | Mode      | Gateway       | Netmask       | POOL IP Range                 |
     |----------------------------------+-----------+---------------+---------------+-------------------------------|
@@ -93,4 +98,64 @@ To delete an existing network, use `vca network delete`. Here is an example:
     | Start Time          | Duration      | Status   |
     |---------------------+---------------+----------|
     | 2015-03-11 12:59:21 | 1 mins 1 secs | success  |
+
+
+Edge Gateway
+------------
+
+Each virtual data center has an edge gateway with several services available. The `gateway` command provides an overview of the current configuration of the edge gateway:
+
+    $ vca gateway
+    
+    Edge Gateways:
+    | Name            | External IPs                 | DHCP   | Firewall   | NAT   | VPN   | Routed Networks                                    | Syslog   | Uplinks   |
+    |-----------------+------------------------------+--------+------------+-------+-------+----------------------------------------------------+----------+-----------|
+    | M735816878-4430 | 23.92.225.232, 23.92.225.247 | On     | Off        | On    | On    | M735816878-4430-default-routed, blueprints-network |          | d2p3-ext  |
+
+The `info` subcommand can be used to display detailed information:
+
+    $ vca gateway info --gateway M735816878-4430
+    
+    Gateway 'M735816878-4430' details:
+    | Property         | Value                        |
+    |------------------+------------------------------|
+    | Name             | M735816878-4430              |
+    | DCHP Service     | On                           |
+    | Firewall Service | Off                          |
+    | NAT Service      | On                           |
+    | VPN Service      | On                           |
+    | Syslog           |                              |
+    | External IP #    | 2                            |
+    | External IPs     | 23.92.225.232, 23.92.225.247 |
+    | Uplinks          | d2p3-ext                     |
+
+
+DHCP
+----
+
+The edge gateway provides a DHCP service that can be operated with the `dhcp` command.
+
+The `dhcp` command shows the status of the DCHP service:
+
+    $ vca dhcp
+    
+    DHCP Service
+    | Network            | IP Range From   | To              | Enabled   |   Default lease |   Max Lease |
+    |--------------------+-----------------+-----------------+-----------+-----------------+-------------|
+    | blueprints-network | 192.168.110.101 | 192.168.110.200 | Yes       |            3600 |        7200 |
+    | routed-120         | 192.168.120.101 | 192.168.120.200 | Yes       |            3600 |        7200 |
+
+Support for adding and removing DHCP pools will be added in a future version.
+
+
+Firewall
+--------
+
+The `firewall` command allows to enable and disable the firewall service on the edge gateway.
+
+The command `vca firewall enable` enables the functionality and `vca firewall disable` disables it.
+
+Support for adding and removing firewall rules will be added in a future version.
+
+
 
