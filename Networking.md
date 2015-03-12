@@ -80,9 +80,9 @@ The `network` command lists the networks in the virtual data center:
     | M735816878-4430-default-routed   | natRouted | 192.168.108.1 | 255.255.255.0 | 192.168.108.2-192.168.108.100 |
     | blueprints-network               | natRouted | 192.168.110.1 | 255.255.255.0 | 192.168.110.2-192.168.110.100 |
 
-To add a new network, use `vca network add` as shown in the example:
+To add a new network, use `vca network create` as shown in the example:
 
-    $ vca network add --network routed-120 --gateway M735816878-4430 --gateway_ip 192.168.120.1 \
+    $ vca network create --network routed-120 --gateway M735816878-4430 --gateway_ip 192.168.120.1 \
           --netmask 255.255.255.0 --dns1 192.168.120.1 --pool 192.168.120.2-192.168.120.100
           
     | Start Time          | Duration       | Status   |
@@ -177,7 +177,7 @@ Individual NAT rules can be added or removed as shown in the examples below.
 
 The following example shows how to configure a SNAT rule to map all the source internal IP addresses to the external IP address:
 
-    $ vca nat add --type SNAT --original_ip 192.168.110.0/24 --original_port any --translated_ip 23.92.225.247 --translated_port any --protocol any
+    $ vca nat add --type SNAT --original-ip 192.168.110.0/24 --original-port any --translated-ip 23.92.225.247 --translated-port any --protocol any
     
     | Start Time          | Duration       | Status   |
     |---------------------+----------------+----------|
@@ -185,7 +185,7 @@ The following example shows how to configure a SNAT rule to map all the source i
 
 This example configures a DNAT rule to allow ssh access to an internal VM:
 
-    $ vca nat add --type DNAT --original_ip 23.92.225.247 --original_port 22 --translated_ip 192.168.110.2 --translated_port 22 --protocol tcp
+    $ vca nat add --type DNAT --original-ip 23.92.225.247 --original-port 22 --translated-ip 192.168.110.2 --translated-port 22 --protocol tcp
     
     | Start Time          | Duration       | Status   |
     |---------------------+----------------+----------|
@@ -272,7 +272,7 @@ The first operation to enable the VPN service is to define a local endpoint usin
 
 Here is an example of configuring a VPN endpoint:
 
-    $ vca vpn add-endpoint --network d2p3-ext --public_ip 23.92.225.247
+    $ vca vpn add-endpoint --network d2p3-ext --public-ip 23.92.225.247
     
     | Start Time          | Duration       | Status   |
     |---------------------+----------------+----------|
@@ -282,8 +282,8 @@ Let's assume we want to setup a VPN tunnel between two virtual data centers on v
 
 On Site-A we create a VPN tunnel with the following command:
 
-    $ vca vpn add-tunnel --tunnel vpn1 --local_ip 23.92.225.247 --local_network blueprints-network \
-          --peer_ip 107.189.77.247 --peer_network 192.168.115.0/24 --secret 123456789012345678901234567890Ab
+    $ vca vpn add-tunnel --tunnel vpn1 --local-ip 23.92.225.247 --local-network blueprints-network \
+          --peer-ip 107.189.77.247 --peer-network 192.168.115.0/24 --secret 123456789012345678901234567890Ab
           
     | Start Time          | Duration       | Status   |
     |---------------------+----------------+----------|
@@ -310,8 +310,8 @@ The shared secret must be a string between 32 and 128 characters long that must 
 
 On Site-B we create a VPN tunnel with the parameters shown below:
 
-    $ vca vpn add-tunnel --tunnel vpn1 --local_ip 107.189.77.247 --local_network routed-116 \
-          --peer_ip 23.92.225.247 --peer_network 192.168.110.0/24 --secret 123456789012345678901234567890Ab
+    $ vca vpn add-tunnel --tunnel vpn1 --local-ip 107.189.77.247 --local-network routed-116 \
+          --peer-ip 23.92.225.247 --peer-network 192.168.110.0/24 --secret 123456789012345678901234567890Ab
     
     | Start Time          | Duration       | Status   |
     |---------------------+----------------+----------|
@@ -336,11 +336,11 @@ After a few minutes, the tunnel will be operational and ready to use:
 
 A convenient feature of **vca-cli** is the ability to add (or delete) a network to an existing tunnel, without having to delete and re-create the entire tunnel. Here is an example:
 
-    $ vca vpn add-network --tunnel vpn1 --local_network routed-116
+    $ vca vpn add-network --tunnel vpn1 --local-network routed-116
 
 And on the peer side:
 
-    $ vca vpn add-network --tunnel vpn1 --peer_network 192.168.116.0/24
+    $ vca vpn add-network --tunnel vpn1 --peer-network 192.168.116.0/24
 
 The result, as shown on Site-A:
 
@@ -361,7 +361,7 @@ The result, as shown on Site-A:
 
 Endpoints, tunnels and networks can be deleted, as shown in these examples:
 
-    $ vca vpn del-network --tunnel vpn1 --local_network routed-116
+    $ vca vpn del-network --tunnel vpn1 --local-network routed-116
     
     | Start Time          | Duration       | Status   |
     |---------------------+----------------+----------|
@@ -373,7 +373,7 @@ Endpoints, tunnels and networks can be deleted, as shown in these examples:
     |---------------------+----------------+----------|
     | 2015-03-11 14:22:22 | 0 mins 46 secs | success  |
     
-    $ vca vpn del-endpoint --network d2p3-ext --public_ip 23.92.225.247
+    $ vca vpn del-endpoint --network d2p3-ext --public-ip 23.92.225.247
     
     | Start Time          | Duration       | Status   |
     |---------------------+----------------+----------|
