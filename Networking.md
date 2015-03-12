@@ -82,7 +82,7 @@ The `network` command lists the networks in the virtual data center:
 
 To add a new network, use `vca network create` as shown in the example:
 
-    $ vca network create --network routed-120 --gateway M735816878-4430 --gateway_ip 192.168.120.1 \
+    $ vca network create --network routed-120 --gateway M735816878-4430 --gateway-ip 192.168.120.1 \
           --netmask 255.255.255.0 --dns1 192.168.120.1 --pool 192.168.120.2-192.168.120.100
           
     | Start Time          | Duration       | Status   |
