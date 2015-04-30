@@ -16,7 +16,7 @@ The following is a list of compute service related commands:
 Operating with vApps
 --------------------
 
-A vApp can be created by specifying an existing template as shown in the example below:
+A vApp can be created by specifying an existing template. Here is an example:
 
     vca vapp create --vapp myvapp --vm myvm \
         --catalog 'Public Catalog' --template 'Ubuntu Server 12.04 LTS (amd64 20150127)' \
