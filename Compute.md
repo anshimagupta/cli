@@ -22,7 +22,7 @@ A vApp can be created by specifying an existing template. Here is an example:
         --catalog 'Public Catalog' --template 'Ubuntu Server 12.04 LTS (amd64 20150127)' \
         --network default-routed-network --mode POOL
 
-It is possible to create more than one instances from a template by using the 'count' parameter. The following example creates 10 virtual machines from a template:
+It is possible to create more than one instances from a template by using the `count` parameter. The following example creates 10 virtual machines from a template:
 
     vca vapp create --vapp myvapp --vm myvm \
         --catalog 'Public Catalog' --template 'Ubuntu Server 12.04 LTS (amd64 20150127)' \
