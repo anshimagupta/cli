@@ -129,6 +129,42 @@ The `info` subcommand can be used to display detailed information:
     | External IPs     | 23.92.225.232, 23.92.225.247 |
     | Uplinks          | d2p3-ext                     |
 
+Public IP Addresses
+-------------------
+
+In vCloud Air On Demand, it is possible to allocate and deallocate public IP addresses. As an example, the following gateway doesn't have a public IP address allocated:
+
+    $ vca gateway
+    
+    Edge Gateways:
+    | Name    | External IPs   | DHCP   | Firewall   | NAT   | VPN   | Routed Networks        | Syslog   | Uplinks     |
+    |---------+----------------+--------+------------+-------+-------+------------------------+----------+-------------|
+    | gateway |                | Off    | On         | Off   | Off   | default-routed-network |          | d2p3v29-ext |
+
+The `add-ip` subcommand allocates a public IP address and makes it available to the gateway:
+
+    $ vca gateway add-ip
+    | Start Time          | Duration       | Status   |
+    |---------------------+----------------+----------|
+    | 2015-05-20 17:24:44 | 0 mins 46 secs | success  |
+
+The gateway has now an external IP:
+
+    $ vca gateway
+    
+    Edge Gateways:
+    | Name    | External IPs   | DHCP   | Firewall   | NAT   | VPN   | Routed Networks        | Syslog   | Uplinks     |
+    |---------+----------------+--------+------------+-------+-------+------------------------+----------+-------------|
+    | gateway | 107.189.93.162 | Off    | On         | Off   | Off   | default-routed-network |          | d2p3v29-ext |
+
+More than one IP address can be allocated to a gateway using the same subcommand.
+
+When the public IP address is no longer needed, it can be deallocated from the gateway:
+
+    $ vca gateway del-ip --ip 107.189.93.162
+    | Start Time          | Duration       | Status   |
+    |---------------------+----------------+----------|
+    | 2015-05-20 17:26:01 | 0 mins 19 secs | success  |
 
 DHCP Service
 ------------
