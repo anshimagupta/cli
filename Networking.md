@@ -144,6 +144,7 @@ In vCloud Air On Demand, it is possible to allocate and deallocate public IP add
 The `add-ip` subcommand allocates a public IP address and makes it available to the gateway:
 
     $ vca gateway add-ip
+    
     | Start Time          | Duration       | Status   |
     |---------------------+----------------+----------|
     | 2015-05-20 17:24:44 | 0 mins 46 secs | success  |
@@ -162,6 +163,7 @@ More than one IP address can be allocated to a gateway using the same subcommand
 When the public IP address is no longer needed, it can be deallocated from the gateway:
 
     $ vca gateway del-ip --ip 107.189.93.162
+    
     | Start Time          | Duration       | Status   |
     |---------------------+----------------+----------|
     | 2015-05-20 17:26:01 | 0 mins 19 secs | success  |
