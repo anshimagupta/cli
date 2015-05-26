@@ -173,7 +173,7 @@ DHCP Service
 
 The edge gateway provides a DHCP service that can be operated with the `dhcp` command.
 
-The `dhcp` command shows the status of the DCHP service:
+With no parameters, the `dhcp` command shows the status of the DCHP service:
 
     $ vca dhcp
     
