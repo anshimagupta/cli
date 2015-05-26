@@ -183,7 +183,35 @@ The `dhcp` command shows the status of the DCHP service:
     | blueprints-network | 192.168.110.101 | 192.168.110.200 | Yes       |            3600 |        7200 |
     | routed-120         | 192.168.120.101 | 192.168.120.200 | Yes       |            3600 |        7200 |
 
-Support for adding and removing DHCP pools will be added in a future version.
+The DHCP service can be enabled or disabled through the `dhcp` command:
+
+    $ vca dhcp enable
+    
+    | Start Time          | Duration       | Status   |
+    |---------------------+----------------+----------|
+    | 2015-05-26 10:01:11 | 0 mins 45 secs | success  |
+    
+    $ vca dhcp disable
+    
+    | Start Time          | Duration       | Status   |
+    |---------------------+----------------+----------|
+    | 2015-05-26 10:03:31 | 0 mins 49 secs | success  |
+
+The `dhcp` also allows to configure the DHCP service to provide IP addresses from a pool to VMs connected to a network, here is an example:
+
+    $ vca dhcp add --network default-routed-network --pool 192.168.109.101-192.168.109.200
+    
+    | Start Time          | Duration       | Status   |
+    |---------------------+----------------+----------|
+    | 2015-05-26 10:15:21 | 0 mins 38 secs | success  |
+
+To delete a pool of IP addresses previously reserved, use the `delete` subcommand. Note that this operation will delete any DHCP pool defined in the specified network, but won't delete pools defined in other networks:
+
+    $ vca dhcp delete --network default-routed-network
+    
+    | Start Time          | Duration       | Status   |
+    |---------------------+----------------+----------|
+    | 2015-05-26 10:20:14 | 0 mins 40 secs | success  |
 
 
 Firewall Service
