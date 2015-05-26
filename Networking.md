@@ -199,7 +199,8 @@ The DHCP service can be enabled or disabled through the `dhcp` command:
 
 The `dhcp` also allows to configure the DHCP service to provide IP addresses from a pool to VMs connected to a network, here is an example:
 
-    $ vca dhcp add --network default-routed-network --pool 192.168.109.101-192.168.109.200
+    $ vca dhcp add --network default-routed-network \
+                   --pool 192.168.109.101-192.168.109.200
     
     | Start Time          | Duration       | Status   |
     |---------------------+----------------+----------|
