@@ -28,3 +28,10 @@ It is possible to create more than one instances from a template by using the `c
         --catalog 'Public Catalog' --template 'Ubuntu Server 12.04 LTS (amd64 20150127)' \
         --network default-routed-network --mode POOL \
         --count 10
+
+The new VM instance can be customize as part of the `create` command by specifying the number of virtual CPUs and size of the memory (in MB). Here is an example of creating a virtual machine with 4 virtual CPUs and 8 Gigs of RAM:
+
+    vca vapp create --vapp myvapp --vm myvm \
+        --catalog 'Public Catalog' --template 'Ubuntu Server 12.04 LTS (amd64 20150127)' \
+        --network default-routed-network --mode POOL \
+        --cpu 4 --ram 8192
