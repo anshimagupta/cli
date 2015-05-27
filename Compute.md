@@ -13,8 +13,8 @@ The following is a list of compute service related commands:
     vm        Operations with VMs
 
 
-Operating with vApps
---------------------
+vApps Operations
+----------------
 
 A vApp can be created by specifying an existing template. Here is an example:
 
