@@ -1,4 +1,4 @@
-vCloud Air Network Management with vca-cli
+vCloud Air Compute Management with vca-cli
 ------------------------------------------
 
 This section describes the compute service operations available through **vca-cli**
