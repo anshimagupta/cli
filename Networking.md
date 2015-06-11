@@ -465,4 +465,4 @@ The edge gateway can be configured to send log events to a server for analysis, 
     | gateway | ['107.189.93.162'] | On             | On                 | On            | ['default-routed-network'] | 192.168.109.2 |`
 
 `hello world`:
-	HI
+	`HI`
