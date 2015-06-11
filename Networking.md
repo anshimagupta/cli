@@ -464,4 +464,5 @@ The edge gateway can be configured to send log events to a server for analysis, 
     |---------+--------------------+----------------+--------------------+---------------+----------------------------+---------------|
     | gateway | ['107.189.93.162'] | On             | On                 | On            | ['default-routed-network'] | 192.168.109.2 |
 
-The following blog entry contains additional information about capturing [edge gateway logs](http://blog.pacogomez.com/monitoring-the-firewall-at-vcloud-air/)
+`hello world`:
+	HI
