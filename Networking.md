@@ -460,9 +460,9 @@ The edge gateway can be configured to send log events to a server for analysis, 
     $ vca gateway
     
     Edge Gateways:
-    | Name    | External IPs       | DHCP Service   | Firewall Service   | NAT Service   | Internal Networks          | Syslog        |
+    `| Name    | External IPs       | DHCP Service   | Firewall Service   | NAT Service   | Internal Networks          | Syslog        |
     |---------+--------------------+----------------+--------------------+---------------+----------------------------+---------------|
-    | gateway | ['107.189.93.162'] | On             | On                 | On            | ['default-routed-network'] | 192.168.109.2 |
+    | gateway | ['107.189.93.162'] | On             | On                 | On            | ['default-routed-network'] | 192.168.109.2 |`
 
 `hello world`:
 	HI
