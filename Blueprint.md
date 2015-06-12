@@ -8,4 +8,5 @@ Upload Blueprint
 
 A blueprint can be uploaded by specifying the location of the blueprint. Here is an example:
 
-    vca bp upload --blueprint hellow --file ~/vca/tosca-blueprints/helloworld/blueprint.yaml
+    vca bp upload --blueprint hellow --file ~/vca/tosca-
+    blueprints/helloworld/blueprint.yaml
