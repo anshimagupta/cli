@@ -136,7 +136,11 @@ To tear down the application, execute the `uninstall` workflow of the deployment
 	|------------+---------------------+----------+-----------|
 	| uninstall  | 2015-06-15 20:26:35 | pending  |           |
 
+<<<<<<< HEAD
 #### Cleaning Up
+=======
+#### Delete Workflow
+>>>>>>> baae91441c0060f3a99a54a07f7948ff27a2b45b
 
 The deployment can be deleted with the `delete` subcommand:
 
